@@ -1,11 +1,10 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { MdClear } from 'react-icons/md'
 import { v4 as uuid } from 'uuid';
 
 import './styles.scss';
 
-export function Input() {
+export function Input({ onTodoCreated }) {
     const [inputText, setInputText] = useState('');
     const [inputError, setInputError] = useState(false);
 
@@ -17,7 +16,7 @@ export function Input() {
     const createTodoItem = () => ({
         id: uuid(),
         text: inputText.trim(),
-        isComplete: false,
+        isCompleted: false,
     });
 
     const setDataInLocalStorage = (key, value) => localStorage.setItem(key, JSON.stringify(value));
@@ -28,13 +27,14 @@ export function Input() {
 
             if (!inputText?.trim().length) {
                 setInputError(true);
-                console.log("пустая строка - плохо");
                 return;
             }
 
             const todoItem = createTodoItem();
 
             setDataInLocalStorage(todoItem.id, todoItem);
+
+            onTodoCreated();
 
             clearInputText();
         }
@@ -46,7 +46,7 @@ export function Input() {
                 <input
                     className='form-text'
                     type='text'
-                    placeholder='Add a todo'
+                    placeholder='Create a new todo...'
                     autoComplete='off'
                     value={inputText}
                     name='text'
