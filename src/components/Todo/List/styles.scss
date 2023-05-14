@@ -21,7 +21,6 @@
   border-radius: 0.5rem;
   border: 1px solid lightgray;
   padding: 1rem;
-  max-height: 300px;
   overflow-y: scroll;
   box-shadow: 0 2.5rem 2rem -2rem hsl(200 50% 20% / 40%);
 
@@ -50,24 +49,6 @@
 .list-todos::-webkit-scrollbar {
   width: 16px;
 }
-
-// .list-todos::-webkit-scrollbar {
-//   width: 16px; /* For Chrome, Safari, and Opera */
-// }
-// .list-todos::-webkit-scrollbar {
-//   width: 3vw; /* THIS WILL RESET THE DEFAULT SCORLLBAR STYLING */
-// }
-
-// /* TO STYLE THE SCROLLBAR TRACK */
-// .list-todos::-webkit-scrollbar-track {
-//   background-color: #ffffff; /* THIS WILL SET THE COLOR OF THE SCROLLBAR TRACK */
-// }
-
-// .list-todos::-webkit-scrollbar-thumb {
-//   background-color: lightgrey;
-//   border: 0.3vw solid #ffffff;
-//   border-radius: 3rem;
-// }
 
 .completed {
   .btn {

@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { MdClear } from 'react-icons/md'
 import { v4 as uuid } from 'uuid';
-
 import './styles.scss';
+import { useDispatch } from "react-redux";
+import { addTodo } from '../../../redux/todoSlice';
 
-export function Input({ onTodoCreated }) {
+export function Input() {
     const [inputText, setInputText] = useState('');
     const [inputError, setInputError] = useState(false);
+    const dispatch = useDispatch();
 
     const clearInputText = () => {
         setInputError(false);
@@ -19,8 +21,6 @@ export function Input({ onTodoCreated }) {
         isCompleted: false,
     });
 
-    const setDataInLocalStorage = (key, value) => localStorage.setItem(key, JSON.stringify(value));
-
     const handleSubmit = (event) => {
         if (event.key === 'Enter') {
             event.preventDefault();
@@ -32,9 +32,7 @@ export function Input({ onTodoCreated }) {
 
             const todoItem = createTodoItem();
 
-            setDataInLocalStorage(todoItem.id, todoItem);
-
-            onTodoCreated();
+            dispatch(addTodo(todoItem));
 
             clearInputText();
         }
