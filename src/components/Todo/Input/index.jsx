@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { MdClear } from 'react-icons/md'
 import { v4 as uuid } from 'uuid';
-import './styles.scss';
+import styles from './styles.module.scss';
 import { useDispatch } from "react-redux";
 import { addTodo } from '../../../redux/todoSlice';
+import { Button } from '../../../ui/custom/button';
 
 export function Input() {
     const [inputText, setInputText] = useState('');
@@ -31,18 +32,16 @@ export function Input() {
             }
 
             const todoItem = createTodoItem();
-
             dispatch(addTodo(todoItem));
-
             clearInputText();
         }
     }
 
     return (
-        <form className='form-group'>
-            <div className='input-group'>
+        <div className={styles.inputContainer}>
+            <div className={styles.input}>
                 <input
-                    className='form-text'
+                    className={styles.inputText}
                     type='text'
                     placeholder='Create a new todo...'
                     autoComplete='off'
@@ -51,17 +50,14 @@ export function Input() {
                     onChange={(e) => setInputText(e.target.value)}
                     onKeyDown={handleSubmit}
                 />
-                <button
-                    className='form-clear-btn'
-                    type='button'
-                    onClick={clearInputText}
-                >
-                    <MdClear />
-                </button>
+                {inputError && <span className={styles.inputError}>
+                    I think you should enter something.
+                </span>}
             </div>
-            {inputError && <span className='input-error'>
-                <p> I think you should enter something.</p>
-            </span>}
-        </form>
+            <Button
+                className={styles.clearBtn}
+                icon={<MdClear />}
+                onClick={clearInputText} />
+        </div>
     );
 };

@@ -1,0 +1,40 @@
+.container {
+  background-image: linear-gradient(45deg, #2a2a72 0%, #009ffd 74%);
+  position: relative;
+  height: 13rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 150px;
+
+  .todoForm {
+    position: absolute;
+    bottom: -27px;
+    width: 100%;
+    max-width: 34rem;
+    display: flex;
+    padding: 0 1rem;
+  }
+
+  .title {
+    position: absolute;
+    bottom: 35px;
+    font-family: 'Broadway', sans-serif;
+    color: wheat;
+    font-size: xx-large;
+
+    @media (min-width: 500px) {
+      margin-left: -250px;
+    }
+  }
+
+  .resultGroup {
+    position: absolute;
+    top: 184px;
+    width: 100%;
+    max-width: 34rem;
+    display: flex;
+    padding: 1.5rem 1rem;
+  }
+}
