@@ -1,17 +1,20 @@
-export function getData() {
-  const keys = Object.keys(localStorage);
-  const storedTodos = [];
+const LOCAL_STORAGE_KEY = 'todo:tasks';
 
-  for (let key of keys) {
-    storedTodos.push(JSON.parse(localStorage.getItem(key)));
-  }
-  return storedTodos;
+export function getData() {
+  const data = localStorage.getItem(LOCAL_STORAGE_KEY);
+  return data ? JSON.parse(data) : [];
 }
 
-export function insertData(todo) {
-  localStorage.setItem(todo.id, JSON.stringify(todo));
+export function insertData(data) {
+  localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(data));
 }
 
 export function deleteData(id) {
-  localStorage.removeItem(id);
+  const data = getData();
+
+  const indexToRemove = data.findIndex((todo) => todo.id === id);
+  if (indexToRemove !== -1) {
+    data.splice(indexToRemove, 1);
+    insertData(data);
+  }
 }

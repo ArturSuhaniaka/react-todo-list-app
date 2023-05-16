@@ -17,14 +17,14 @@ const todoSlice = createSlice({
 
 function addToState(state, action) {
   state.push(action.payload);
-  insertData(action.payload);
+  insertData(state);
 }
 
 function updateState(state, action) {
   const todo = state.find((todo) => todo.id === action.payload);
   if (todo) {
     todo.isCompleted = !todo.isCompleted;
-    insertData(todo);
+    insertData(state);
   }
 }
 
