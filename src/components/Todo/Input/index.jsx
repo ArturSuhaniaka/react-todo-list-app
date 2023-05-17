@@ -9,6 +9,7 @@ import { Button } from '../../../ui/custom/button';
 export function Input() {
     const [inputText, setInputText] = useState('');
     const [inputError, setInputError] = useState(false);
+
     const dispatch = useDispatch();
 
     const clearInputText = () => {
@@ -37,6 +38,11 @@ export function Input() {
         }
     }
 
+    const onInputChange = (event) => {
+        setInputText(event.target.value)
+        setInputError(false);
+    }
+
     return (
         <div className={styles.inputContainer}>
             <div className={styles.input}>
@@ -47,7 +53,7 @@ export function Input() {
                     autoComplete='off'
                     value={inputText}
                     name='text'
-                    onChange={(e) => setInputText(e.target.value)}
+                    onChange={(e) => onInputChange(e)}
                     onKeyDown={handleSubmit}
                 />
                 {inputError && <span className={styles.inputError}>
