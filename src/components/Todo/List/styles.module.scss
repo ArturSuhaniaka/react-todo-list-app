@@ -11,54 +11,41 @@
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   color: gray;
 
-  .todoContainer:last-child {
+  .emptyList {
+    width: 100%;
+    padding: 11px 0;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    text-align: center;
+  }
+
+  div:last-child {
     border-bottom: 1px solid gray;
   }
 
-  .todoContainer {
+  .header {
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
-    padding: 6px 0px;
-    border-top: 1px solid gray;
-  }
 
-  .todoText {
-    padding: 5px 10px;
-    margin-right: 10px;
-    border-radius: 3px;
-    flex: 1;
-    overflow: auto;
-    word-wrap: break-word;
-  }
+    @media (min-width: 300px) {
+      flex-direction: row;
+    }
 
-  .btn {
-    color: grey;
+    .countInfo {
+      font-size: 14px;
+      cursor: default;
+    }
 
-    &.deleteBtn {
+    .clearCompletedBtn {
+      font-size: 14px;
+      color: grey;
+
       &:hover {
         color: red;
       }
     }
-  }
-
-  .todoCompleted {
-    .todoText {
-      text-decoration: line-through;
-      color: lightgray;
-    }
-
-    .btn {
-      color: lightgray;
-    }
-  }
-
-  p {
-    width: 100%;
-    padding: 11.5px 0;
-    border-top: 1px solid gray;
-    text-align: center;
   }
 }

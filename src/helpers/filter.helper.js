@@ -21,3 +21,5 @@ export const getFilteredTodos = createSelector(
     return todos.filter((todo) => todo.isCompleted === completedStatus);
   }
 );
+
+export const getAllTodosCount = (state) => state.todos.list.length;

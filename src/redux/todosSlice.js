@@ -16,6 +16,7 @@ const todosSlice = createSlice({
     addTodo: (state, action) => addToState(state, action),
     completeTodo: (state, action) => updateState(state, action),
     removeTodo: (state, action) => removeFromState(state, action),
+    removeCompletedTodos: (state, action) => removeCompletedFromState(state),
   },
 });
 
@@ -37,7 +38,15 @@ function removeFromState(state, action) {
   state.list = state.list.filter((todo) => todo.id !== action.payload);
 }
 
-export const { addTodo, completeTodo, removeTodo, setFilter } =
+function removeCompletedFromState(state) {
+  state.list
+    .filter((todo) => todo.isCompleted)
+    .map((todo) => deleteData(todo.id));
+
+  state.list = state.list.filter((todo) => !todo.isCompleted);
+}
+
+export const { addTodo, completeTodo, removeTodo, removeCompletedTodos } =
   todosSlice.actions;
 
 export default todosSlice.reducer;

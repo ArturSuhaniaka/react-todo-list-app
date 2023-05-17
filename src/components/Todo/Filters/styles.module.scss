@@ -3,8 +3,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  padding-bottom: 6px;
+  column-gap: auto;
 
   @media (min-width: 250px) {
     flex-direction: row;
