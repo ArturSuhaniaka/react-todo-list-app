@@ -32,9 +32,10 @@
   .resultGroup {
     position: absolute;
     top: 184px;
+    display: flex;
+    flex-direction: column;
     width: 100%;
     max-width: 34rem;
-    display: flex;
     padding: 1.5rem 1rem;
   }
 }

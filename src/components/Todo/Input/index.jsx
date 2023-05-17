@@ -3,7 +3,7 @@ import { MdClear } from 'react-icons/md'
 import { v4 as uuid } from 'uuid';
 import styles from './styles.module.scss';
 import { useDispatch } from "react-redux";
-import { addTodo } from '../../../redux/todoSlice';
+import { addTodo } from '../../../redux/todosSlice';
 import { Button } from '../../../ui/custom/button';
 
 export function Input() {
@@ -57,7 +57,8 @@ export function Input() {
             <Button
                 className={styles.clearBtn}
                 icon={<MdClear />}
-                onClick={clearInputText} />
+                onClick={clearInputText}
+            />
         </div>
     );
 };

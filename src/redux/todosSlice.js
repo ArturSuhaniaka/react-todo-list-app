@@ -5,9 +5,13 @@ import {
   deleteData,
 } from '../helpers/localStorage.helper';
 
-const todoSlice = createSlice({
+const initialState = {
+  list: [...getData()],
+};
+
+const todosSlice = createSlice({
   name: 'todos',
-  initialState: [...getData()],
+  initialState,
   reducers: {
     addTodo: (state, action) => addToState(state, action),
     completeTodo: (state, action) => updateState(state, action),
@@ -16,23 +20,24 @@ const todoSlice = createSlice({
 });
 
 function addToState(state, action) {
-  state.push(action.payload);
-  insertData(state);
+  state.list.push(action.payload);
+  insertData(state.list);
 }
 
 function updateState(state, action) {
-  const todo = state.find((todo) => todo.id === action.payload);
+  const todo = state.list.find((todo) => todo.id === action.payload);
   if (todo) {
     todo.isCompleted = !todo.isCompleted;
-    insertData(state);
+    insertData(state.list);
   }
 }
 
 function removeFromState(state, action) {
   deleteData(action.payload);
-  return state.filter((todo) => todo.id !== action.payload);
+  state.list = state.list.filter((todo) => todo.id !== action.payload);
 }
 
-export const { addTodo, completeTodo, removeTodo } = todoSlice.actions;
+export const { addTodo, completeTodo, removeTodo, setFilter } =
+  todosSlice.actions;
 
-export default todoSlice.reducer;
+export default todosSlice.reducer;
