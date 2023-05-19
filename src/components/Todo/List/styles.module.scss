@@ -11,16 +11,23 @@
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   color: gray;
 
+  div:last-child {
+    border-bottom: none;
+    margin-bottom: 0px;
+  }
+
   .emptyList {
     width: 100%;
     padding: 11px 0;
-    border-top: 1px solid gray;
-    border-bottom: 1px solid gray;
+    border-top: 2px solid gray;
+    border-bottom: 2px solid gray;
     text-align: center;
   }
 
-  div:last-child {
-    border-bottom: 1px solid gray;
+  .droppableContainer {
+    width: 100%;
+    border-top: 2px solid gray;
+    border-bottom: 2px solid gray;
   }
 
   .header {
@@ -29,6 +36,7 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    padding-bottom: 4px;
 
     @media (min-width: 300px) {
       flex-direction: row;
@@ -48,5 +56,9 @@
         color: red;
       }
     }
+  }
+
+  .footer {
+    margin-top: 10px;
   }
 }
