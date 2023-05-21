@@ -5,7 +5,7 @@ export function Button({ icon, className, onClick }) {
     return (
         <button
             type='button'
-            className={`${styles.btn} ${className}`}
+            className={`${styles.btn} ${className ?? ''}`}
             onClick={onClick}
         >
             {icon}

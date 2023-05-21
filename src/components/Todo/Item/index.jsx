@@ -6,6 +6,7 @@ import { Button } from '../../../ui/custom/button';
 import { useDispatch } from 'react-redux';
 import { completeTodo, removeTodo } from '../../../redux/todosSlice';
 import { Draggable } from 'react-beautiful-dnd';
+import { CheckboxWithCustomIcons } from '../../../ui/custom/checkbox';
 
 export function TodoItem({ todo, index, isDragDisabled }) {
     const dispatch = useDispatch();
@@ -25,10 +26,12 @@ export function TodoItem({ todo, index, isDragDisabled }) {
                     {...provided.dragHandleProps}
                     ref={provided.innerRef}
                 >
-                    <Button
-                        className={styles.btn}
-                        icon={todo.isCompleted ? <FiCheckSquare size={18} /> : <FiSquare size={18} />}
-                        onClick={() => dispatch(completeTodo(todo.id))}
+                    <CheckboxWithCustomIcons
+                        checked={todo.isCompleted}
+                        onChange={() => dispatch(completeTodo(todo.id))}
+                        className={styles.checkbox}
+                        checkedIcon={<FiCheckSquare size={18} />}
+                        uncheckedIcon={<FiSquare size={18} />}
                     />
                     <div className={styles.todoText}>
                         {todo.text}

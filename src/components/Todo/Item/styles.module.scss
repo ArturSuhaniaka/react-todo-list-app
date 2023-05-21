@@ -19,8 +19,12 @@
     word-wrap: break-word;
   }
 
+  .checkbox {
+    color: gray;
+  }
+
   .btn {
-    color: grey;
+    color: gray;
 
     &.deleteBtn {
       &:hover {
@@ -33,6 +37,10 @@
 .todoCompleted {
   .todoText {
     text-decoration: line-through;
+    color: lightgray;
+  }
+
+  .checkbox {
     color: lightgray;
   }
 

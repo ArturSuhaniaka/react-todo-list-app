@@ -1,0 +1,21 @@
+.checkbox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+
+  input[type='checkbox'] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .checkboxIcon {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+}
