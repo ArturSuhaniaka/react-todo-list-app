@@ -12,7 +12,7 @@ export function insertData(data) {
 export function deleteData(id) {
   const data = getData();
 
-  const indexToRemove = data.findIndex((todo) => todo.id === id);
+  const indexToRemove = data.findIndex(todo => todo.id === id);
   if (indexToRemove !== -1) {
     data.splice(indexToRemove, 1);
     insertData(data);

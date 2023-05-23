@@ -2,7 +2,7 @@ import React from 'react';
 import './App.scss';
 import { Page } from './components/Todo/Page';
 
-export function App() {
+function App() {
   return <Page />;
 }
 

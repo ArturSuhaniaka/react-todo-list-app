@@ -7,8 +7,8 @@ export const StatusFilters = {
 };
 
 export const getFilteredTodos = createSelector(
-  (state) => state.todos.list,
-  (state) => state.filters,
+  state => state.todos.list,
+  state => state.filters,
   (todos, filters) => {
     const { status } = filters;
 
@@ -18,8 +18,8 @@ export const getFilteredTodos = createSelector(
 
     const completedStatus = status === StatusFilters.Completed;
 
-    return todos.filter((todo) => todo.isCompleted === completedStatus);
+    return todos.filter(todo => todo.isCompleted === completedStatus);
   }
 );
 
-export const getAllTodosCount = (state) => state.todos.list.length;
+export const getAllTodosCount = state => state.todos.list.length;

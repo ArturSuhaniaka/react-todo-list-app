@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 import { createSlice } from '@reduxjs/toolkit';
 import {
   getData,
@@ -16,7 +17,7 @@ const todosSlice = createSlice({
     addTodo: (state, action) => addToState(state, action),
     completeTodo: (state, action) => updateState(state, action),
     removeTodo: (state, action) => removeFromState(state, action),
-    removeCompletedTodos: (state, action) => removeCompletedFromState(state),
+    removeCompletedTodos: state => removeCompletedFromState(state),
     reorderTodos: (state, action) => reorderState(state, action),
   },
 });
@@ -27,27 +28,28 @@ function addToState(state, action) {
 }
 
 function updateState(state, action) {
-  const todo = state.list.find((todo) => todo.id === action.payload);
-  if (todo) {
-    todo.isCompleted = !todo.isCompleted;
+  const updatedTodo = state.list.find(todo => todo.id === action.payload);
+  if (updatedTodo) {
+    updatedTodo.isCompleted = !updatedTodo.isCompleted;
     insertData(state.list);
   }
 }
 
 function removeFromState(state, action) {
   deleteData(action.payload);
-  state.list = state.list.filter((todo) => todo.id !== action.payload);
+  // eslint-disable-next-line no-param-reassign
+  state.list = state.list.filter(todo => todo.id !== action.payload);
 }
 
 function removeCompletedFromState(state) {
-  state.list
-    .filter((todo) => todo.isCompleted)
-    .map((todo) => deleteData(todo.id));
+  state.list.filter(todo => todo.isCompleted).map(todo => deleteData(todo.id));
 
-  state.list = state.list.filter((todo) => !todo.isCompleted);
+  // eslint-disable-next-line no-param-reassign
+  state.list = state.list.filter(todo => !todo.isCompleted);
 }
 
 function reorderState(state, action) {
+  // eslint-disable-next-line no-param-reassign
   state.list = action.payload;
   insertData(state.list);
 }

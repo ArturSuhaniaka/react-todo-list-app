@@ -10,6 +10,7 @@ const filtersSlice = createSlice({
   initialState,
   reducers: {
     statusFilterChanged: (state, action) => {
+      // eslint-disable-next-line no-param-reassign
       state.status = action.payload;
     },
   },
