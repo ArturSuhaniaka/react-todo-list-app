@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './styles.module.scss';
 
-export function CheckboxWithCustomIcons({
+export function Checkbox({
   checked,
   onChange,
   className,
@@ -32,14 +32,14 @@ export function CheckboxWithCustomIcons({
   );
 }
 
-CheckboxWithCustomIcons.defaultProps = {
+Checkbox.defaultProps = {
   onChange: () => {},
   className: '',
   checkedIcon: 'v',
   uncheckedIcon: 'o',
 };
 
-CheckboxWithCustomIcons.propTypes = {
+Checkbox.propTypes = {
   checked: PropTypes.bool.isRequired,
   onChange: PropTypes.func,
   className: PropTypes.string,

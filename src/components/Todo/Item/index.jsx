@@ -7,7 +7,7 @@ import { Draggable } from 'react-beautiful-dnd';
 import { Button } from '../../Shared/Button';
 import { completeTodo, removeTodo } from '../../../redux/todosSlice';
 import styles from './styles.module.scss';
-import { CheckboxWithCustomIcons } from '../../Shared/Checkbox';
+import { Checkbox } from '../../Shared/Checkbox';
 
 export function TodoItem({ todo, index, isDragDisabled }) {
   const dispatch = useDispatch();
@@ -31,7 +31,7 @@ export function TodoItem({ todo, index, isDragDisabled }) {
           {...provided.dragHandleProps}
           ref={provided.innerRef}
         >
-          <CheckboxWithCustomIcons
+          <Checkbox
             checked={todo.isCompleted}
             onChange={() => dispatch(completeTodo(todo.id))}
             className={styles.checkbox}
