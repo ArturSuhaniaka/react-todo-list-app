@@ -1,0 +1,65 @@
+.todoContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 6px 0px;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+  margin: -1px 0;
+  background-color: white;
+
+  .todoText {
+    padding: 5px 10px;
+    margin-right: 10px;
+    border-radius: 3px;
+    flex: 1;
+    overflow: auto;
+    word-wrap: break-word;
+  }
+
+  .checkbox {
+    color: gray;
+  }
+
+  .btn {
+    color: gray;
+
+    &.deleteBtn {
+      &:hover {
+        color: red;
+      }
+    }
+  }
+}
+
+.todoCompleted {
+  .todoText {
+    text-decoration: line-through;
+    color: lightgray;
+  }
+
+  .checkbox {
+    color: lightgray;
+  }
+
+  .btn {
+    color: lightgray;
+  }
+}
+
+.onDragging {
+  border: 1px solid black;
+  border-radius: 8px;
+  background-color: whitesmoke;
+  padding: 8px;
+
+  .todoText {
+    color: gray;
+  }
+
+  .btn {
+    color: gray;
+  }
+}

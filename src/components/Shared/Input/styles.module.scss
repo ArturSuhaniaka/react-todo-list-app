@@ -1,0 +1,11 @@
+.input {
+  flex: 1;
+
+  .inputText {
+    width: 100%;
+
+    @media (min-width: 200px) {
+      margin-right: 1rem;
+    }
+  }
+}

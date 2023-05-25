@@ -1,0 +1,21 @@
+.filtersContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: auto;
+
+  @media (min-width: 250px) {
+    flex-direction: row;
+  }
+
+  .btn {
+    font-size: 14px;
+    color: gray;
+    margin: 3px 7px;
+  }
+
+  .selected {
+    color: blue;
+  }
+}
