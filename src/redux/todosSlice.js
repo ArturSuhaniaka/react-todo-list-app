@@ -30,18 +30,24 @@ function updateState(state, action) {
 }
 
 function removeFromState(state, action) {
-  // eslint-disable-next-line no-param-reassign
-  state.list = state.list.filter(todo => todo.id !== action.payload);
+  return {
+    ...state,
+    list: state.list.filter(todo => todo.id !== action.payload),
+  };
 }
 
 function removeCompletedFromState(state) {
-  // eslint-disable-next-line no-param-reassign
-  state.list = state.list.filter(todo => !todo.isCompleted);
+  return {
+    ...state,
+    list: state.list.filter(todo => !todo.isCompleted),
+  };
 }
 
 function reorderState(state, action) {
-  // eslint-disable-next-line no-param-reassign
-  state.list = action.payload;
+  return {
+    ...state,
+    list: action.payload,
+  };
 }
 
 export const {
