@@ -4,16 +4,19 @@ import { v4 as uuid } from 'uuid';
 import { useDispatch } from 'react-redux';
 import styles from './styles.module.scss';
 import { addTodo } from '../../../redux/todosSlice';
+import { Input } from '../../Shared/Input';
 import { Button } from '../../Shared/Button';
 
-export function Input() {
+export function InputForm() {
   const [inputText, setInputText] = useState('');
-  const [inputError, setInputError] = useState(false);
+  const [inputInvalid, setInputInvalid] = useState(false);
+
+  const inputErrorMsg = 'I think you should enter something...';
 
   const dispatch = useDispatch();
 
   const clearInputText = () => {
-    setInputError(false);
+    setInputInvalid(false);
     setInputText('');
   };
 
@@ -28,7 +31,7 @@ export function Input() {
       event.preventDefault();
 
       if (!inputText?.trim().length) {
-        setInputError(true);
+        setInputInvalid(true);
         return;
       }
 
@@ -40,28 +43,21 @@ export function Input() {
 
   const onInputChange = event => {
     setInputText(event.target.value);
-    setInputError(false);
+    setInputInvalid(false);
   };
 
   return (
     <div className={styles.inputContainer}>
-      <div className={styles.input}>
-        <input
-          className={styles.inputText}
-          type='text'
-          placeholder='Create a new todo...'
-          autoComplete='off'
-          value={inputText}
-          name='text'
-          onChange={e => onInputChange(e)}
-          onKeyDown={handleSubmit}
-        />
-        {inputError && (
-          <span className={styles.inputError}>
-            I think you should enter something.
-          </span>
-        )}
-      </div>
+      <Input
+        className={styles.input}
+        placeholder='Create a new todo...'
+        value={inputText}
+        onChange={onInputChange}
+        onKeyDown={handleSubmit}
+        inputInvalid={inputInvalid}
+        inputErrorMsg={inputErrorMsg}
+        errorClassName={styles.inputError}
+      />
       <Button
         className={styles.clearBtn}
         icon={<MdClear />}
