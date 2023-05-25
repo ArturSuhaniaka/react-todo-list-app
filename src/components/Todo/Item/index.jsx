@@ -4,6 +4,7 @@ import { FiSquare, FiCheckSquare } from 'react-icons/fi';
 import { MdDeleteForever } from 'react-icons/md';
 import { useDispatch } from 'react-redux';
 import { Draggable } from 'react-beautiful-dnd';
+import classNames from 'classnames';
 import { Button } from '../../Shared/Button';
 import { completeTodo, removeTodo } from '../../../redux/todosSlice';
 import styles from './styles.module.scss';
@@ -11,6 +12,8 @@ import { Checkbox } from '../../Shared/Checkbox';
 
 export function TodoItem({ todo, index, isDragDisabled }) {
   const dispatch = useDispatch();
+
+  const wrapperClasses = classNames(styles.btn, styles.deleteBtn);
 
   return (
     <Draggable
@@ -40,7 +43,7 @@ export function TodoItem({ todo, index, isDragDisabled }) {
           />
           <div className={styles.todoText}>{todo.text}</div>
           <Button
-            className={`${styles.btn} ${styles.deleteBtn}`}
+            className={wrapperClasses}
             icon={<MdDeleteForever size={20} />}
             onClick={() => dispatch(removeTodo(todo.id))}
           />

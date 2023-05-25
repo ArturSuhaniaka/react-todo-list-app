@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import styles from './styles.module.scss';
 
 export function Input({
@@ -12,8 +13,10 @@ export function Input({
   inputErrorMsg,
   errorClassName,
 }) {
+  const wrapperClasses = classNames(styles.input, className);
+
   return (
-    <div className={`${styles.input} ${className}`}>
+    <div className={wrapperClasses}>
       <input
         className={styles.inputText}
         type='text'

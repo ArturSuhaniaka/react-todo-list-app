@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import styles from './styles.module.scss';
 
 export function Checkbox({
@@ -11,6 +12,8 @@ export function Checkbox({
 }) {
   const [isChecked, setIsChecked] = useState(checked);
 
+  const wrapperClasses = classNames(styles.checkbox, className);
+
   function handleChange(externalOnChange) {
     setIsChecked(prev => !prev);
     if (typeof externalOnChange === 'function') {
@@ -19,7 +22,7 @@ export function Checkbox({
   }
   return (
     // eslint-disable-next-line jsx-a11y/label-has-associated-control
-    <label className={`${styles.checkbox} ${className ?? ''}`}>
+    <label className={wrapperClasses}>
       <input
         type='checkbox'
         checked={isChecked}
